@@ -1,0 +1,74 @@
+ CREATE DATABASE Airport;
+  
+  
+  
+   USE Airport;
+
+  CREATE TABLE Airport (
+    AirportID INT PRIMARY KEY Auto_increment,
+    AirportName VARCHAR(100),
+    Location VARCHAR(100),
+    City VARCHAR(100)
+);
+
+CREATE TABLE Airline (
+    AirlineID INT PRIMARY KEY Auto_increment,
+    AirlineName VARCHAR(100),
+    Country VARCHAR(100),
+	City VARCHAR(100)
+);
+
+CREATE TABLE Flight (
+    FlightID INT PRIMARY KEY Auto_increment,
+    FlightNumber VARCHAR(10),
+    DepartureAirportID INT,
+    ArrivalAirportID INT,
+    DepartureTime DATETIME,
+    ArrivalTime DATETIME,
+    AirlineID INT,
+    Status VARCHAR(20)
+);
+
+CREATE TABLE Passenger (
+    PassengerID INT PRIMARY KEY Auto_increment,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100),
+    Phone VARCHAR(15),
+    DateOfBirth DATE
+);
+
+CREATE TABLE Booking (
+    BookingID INT PRIMARY KEY Auto_increment,
+    FlightID INT,
+    PassengerID INT ,
+    BaggageID INT ,
+    BookingDate DATETIME,
+    SeatNumber VARCHAR(5),
+    Price DECIMAL(10, 2)
+);
+
+CREATE TABLE Staff (
+    StaffID INT PRIMARY KEY Auto_increment,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Position VARCHAR(50),
+    Email VARCHAR(100),
+    Phone VARCHAR(15),
+    AirportID INT 
+);
+
+CREATE TABLE Baggage (
+    BaggageID INT PRIMARY KEY Auto_increment,
+    PassengerID INT,
+    Weight DECIMAL(5, 2),
+    Dimensions VARCHAR(50),
+    Status VARCHAR(20)
+);
+
+CREATE TABLE Terminal (
+    TerminalID INT PRIMARY KEY Auto_increment,
+    AirportID INT,
+    TerminalName VARCHAR(50),
+    Gates INT
+);
